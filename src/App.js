@@ -13,6 +13,23 @@ import hackathonBadge from "./assets/HACKATHON_12.png";
 import mehboobaMusic from "./assets/Mehbooba Mehbooba Song.mp3";
 import grungeBackground from "./assets/grunge-style-starburst-background.jpg";
 import Masonry from "./Masonry";
+import img1 from "./assets/gallery/IMG_3162.JPG";
+import img2 from "./assets/gallery/IMG_4011.JPG";
+import img3 from "./assets/gallery/IMG_4015.JPG";
+import img4 from "./assets/gallery/_DSC3228.JPG";
+import img5 from "./assets/gallery/_DSC3292.JPG";
+import img6 from "./assets/gallery/_DSC3297.JPG";
+import img7 from "./assets/gallery/_DSC3304.JPG";
+import img8 from "./assets/gallery/_DSC3310.JPG";
+import img9 from "./assets/gallery/_DSC4129.JPG";
+import img10 from "./assets/gallery/_DSC4157.JPG";
+import img11 from "./assets/gallery/_DSC4190.JPG";
+import artistShow from "./assets/events/artist show.JPG";
+import firstDay from "./assets/events/first day.JPG";
+import hackathonEvent from "./assets/events/hackathon.JPG";
+import iplAuction from "./assets/events/ipl auction.JPG";
+import startupShow from "./assets/events/startup show.JPG";
+import uiUx from "./assets/events/ui_ux.JPG";
 
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false);
@@ -30,23 +47,26 @@ function App() {
     }
   };
   const galleryItems = [
-    { id: 1, img: galleryTile, height: 520, url: "#gallery" },
-    { id: 2, img: heroImage, height: 420, url: "#gallery" },
-    { id: 3, img: openUnstop, height: 360, url: "#gallery" },
-    { id: 4, img: summitWordmark, height: 420, url: "#gallery" },
-    { id: 5, img: heroImage, height: 520, url: "#gallery" },
-    { id: 6, img: galleryTile, height: 360, url: "#gallery" },
-    { id: 7, img: openUnstop, height: 420, url: "#gallery" },
-    { id: 8, img: summitWordmark, height: 360, url: "#gallery" }
+    { id: 1, img: img1, height: 520, url: "#gallery" },
+    { id: 2, img: img2, height: 420, url: "#gallery" },
+    { id: 3, img: img3, height: 360, url: "#gallery" },
+    { id: 4, img: img4, height: 420, url: "#gallery" },
+    { id: 5, img: img5, height: 520, url: "#gallery" },
+    { id: 6, img: img6, height: 360, url: "#gallery" },
+    { id: 7, img: img7, height: 420, url: "#gallery" },
+    { id: 8, img: img8, height: 360, url: "#gallery" },
+    { id: 9, img: img9, height: 520, url: "#gallery" },
+    { id: 10, img: img10, height: 420, url: "#gallery" },
+    { id: 11, img: img11, height: 360, url: "#gallery" }
   ];
 
   const eventItems = [
-    { id: 1, name: "Hackathon", img: hackathonBadge },
-    { id: 2, name: "Case Study", img: summitWordmark },
-    { id: 3, name: "Pitch Competition", img: openUnstop },
-    { id: 4, name: "Workshops", img: heroImage },
-    { id: 5, name: "Hackathon", img: hackathonBadge },
-    { id: 6, name: "Case Study", img: summitWordmark }
+    { id: 1, name: "Artist Show", img: artistShow },
+    { id: 2, name: "First Day", img: firstDay },
+    { id: 3, name: "Hackathon", img: hackathonEvent },
+    { id: 4, name: "IPL Auction", img: iplAuction },
+    { id: 5, name: "Startup Show", img: startupShow },
+    { id: 6, name: "UI/UX", img: uiUx }
   ];
 
   return (
@@ -61,7 +81,6 @@ function App() {
       <header className="nav">
         <nav className="nav-links nav-links--left">
           <a href="#home">Home</a>
-          <a href="#hackathon">Hackathon</a>
           <a href="#schedule">Schedule</a>
         </nav>
         <div className="nav-logo">
@@ -177,25 +196,14 @@ function App() {
       <footer className="footer">
         <div className="footer-brand">E</div>
         <div className="footer-col">
-          <h3>Events</h3>
-          <a href="#events">E-Summit</a>
-          <a href="#events">Hackathon</a>
-          <a href="#events">Workshops</a>
-          <a href="#events">Pitchathon</a>
-        </div>
-        <div className="footer-col">
           <h3>About Us</h3>
-          <a href="#home">Team</a>
+          <a href="https://ecell.iiitnr.ac.in/">ecell iiit nr</a>
+          <a href="https://ecell.iiitnr.ac.in/team">Team</a>
           <a href="#home">Committee</a>
-          <a href="#home">College</a>
         </div>
         <div className="footer-col">
           <h3>Social</h3>
-          <div className="social-row">
-            <span className="social-dot" />
-            <span className="social-dot" />
-            <span className="social-dot" />
-          </div>
+          <a href="https://www.instagram.com/ecell_iiitnr/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </footer>
       <img
