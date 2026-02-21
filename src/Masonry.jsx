@@ -54,13 +54,13 @@ const Masonry = ({
   animateFrom = "bottom",
   scaleOnHover = true,
   hoverScale = 0.95,
-  blurToFocus = true,
+  blurToFocus = false,
   colorShiftOnHover = false
 }) => {
   const columns = useMedia(
-    ["(min-width:1500px)", "(min-width:1000px)", "(min-width:600px)", "(min-width:400px)"],
-    [5, 4, 3, 2],
-    1
+    ["(min-width:1500px)", "(min-width:1000px)", "(min-width:600px)"],
+    [5, 4, 3],
+    2
   );
 
   const [containerRef, { width }] = useMeasure();
@@ -116,6 +116,11 @@ const Masonry = ({
       return { ...child, x, y, w: columnWidth, h: height };
     });
   }, [columns, items, width]);
+
+  const totalHeight = useMemo(() => {
+    if (grid.length === 0) return 520;
+    return Math.max(...grid.map(item => item.y + item.h)) + 20;
+  }, [grid]);
 
   const hasMounted = useRef(false);
 
@@ -190,7 +195,7 @@ const Masonry = ({
   };
 
   return (
-    <div ref={containerRef} className="masonry-container">
+    <div ref={containerRef} className="masonry-container" style={{ height: totalHeight }}>
       {grid.map(item => (
         <div
           key={item.id}

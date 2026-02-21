@@ -34,6 +34,7 @@ import uiUx from "./assets/events/ui_ux.JPG";
 function App() {
   const [preloaderComplete, setPreloaderComplete] = useState(false);
   const [musicPlaying, setMusicPlaying] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const audioRef = useRef(null);
 
   const toggleMusic = () => {
@@ -45,6 +46,14 @@ function App() {
       }
       setMusicPlaying(!musicPlaying);
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
   const galleryItems = [
     { id: 1, img: img1, height: 520, url: "#gallery" },
@@ -76,6 +85,7 @@ function App() {
         Your browser does not support the audio element.
       </audio>
       {!preloaderComplete && <Preloader onComplete={() => setPreloaderComplete(true)} audioRef={audioRef} />}
+      {mobileMenuOpen && <div className="mobile-menu-overlay" onClick={closeMobileMenu}></div>}
       <img
         className="edge-strip edge-strip--top"
         src={edgeStrip}
@@ -83,17 +93,31 @@ function App() {
         aria-hidden="true"
       />
       <header className="nav">
-        <nav className="nav-links nav-links--left">
-          <a href="#home">Home</a>
-          <a href="#schedule">Schedule</a>
-        </nav>
         <div className="nav-logo">
           <img src={navLogo} alt="E-Cell" />
         </div>
-        <nav className="nav-links nav-links--right">
-          <a href="#events">Events</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact Us</a>
+        <button className="mobile-menu-toggle" onClick={toggleMobileMenu} aria-label="Toggle menu">
+          <span className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <nav className={`nav-links-container ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+          <div className="mobile-menu-header">
+            <button className="mobile-close-btn" onClick={closeMobileMenu} aria-label="Close menu">
+              <span>✕</span>
+            </button>
+          </div>
+          <nav className="nav-links nav-links--left">
+            <a href="#home" onClick={closeMobileMenu}>Home</a>
+            <a href="#schedule" onClick={closeMobileMenu}>Schedule</a>
+          </nav>
+          <nav className="nav-links nav-links--right">
+            <a href="#events" onClick={closeMobileMenu}>Events</a>
+            <a href="#gallery" onClick={closeMobileMenu}>Gallery</a>
+            <a href="#contact" onClick={closeMobileMenu}>Contact Us</a>
+          </nav>
         </nav>
       </header>
 
@@ -103,13 +127,13 @@ function App() {
             <span className="music-icon">{musicPlaying ? "🔊" : "🔇"}</span>
           </button>
           <div className="hero-card">
-            <img className="hero-image" src={heroImage} alt="E-Summit 26" />
+            <img className="hero-image" src={heroImage} alt="E-Summit 26" loading="eager" />
           </div>
         </section>
 
         <section id="hackathon" className="intro">
           <div className="intro-media">
-            <img src={summitWordmark} alt="E-Summit 2026" />
+            <img src={summitWordmark} alt="E-Summit 2026" loading="lazy" />
             <p>
               Welcome to the flagship event of Entrepreneur Cell of IIIT Naya
               Raipur, where dreams take flight and ventures succeed. Join us in
@@ -123,41 +147,41 @@ function App() {
               href="https://unstop.com/college-fests/e-summit-2026-international-institute-of-information-technology-iiit-naya-raipur-441702"
               aria-label="Open Unstop"
             >
-              <img src={openUnstop} alt="Open Unstop" />
+              <img src={openUnstop} alt="Open Unstop" loading="lazy" />
             </a>
           </div>
         </section>
 
         <section id="schedule" className="schedule">
           <div className="section-title section-title--image">
-            <img src={scheduleHeading} alt="Schedule" />
+            <img src={scheduleHeading} alt="Schedule" loading="lazy" />
           </div>
           <div className="timeline">
             <div className="timeline-row">
               <div className="event-badge left">
-                <img src={hackathonBadge} alt="Case Study 13 March" />
+                <img src={hackathonBadge} alt="Case Study 13 March" loading="lazy" />
               </div>
               <div className="timeline-mid"><span className="dot" /></div>
               <div className="event-badge right">
-                <img src={hackathonBadge} alt="Hackathon 12 March" />
+                <img src={hackathonBadge} alt="Hackathon 12 March" loading="lazy" />
               </div>
             </div>
             <div className="timeline-row">
               <div className="event-badge left">
-                <img src={hackathonBadge} alt="Case Study 13 March" />
+                <img src={hackathonBadge} alt="Case Study 13 March" loading="lazy" />
               </div>
               <div className="timeline-mid"><span className="dot" /></div>
               <div className="event-badge right">
-                <img src={hackathonBadge} alt="Pitch Competition 14 March" />
+                <img src={hackathonBadge} alt="Pitch Competition 14 March" loading="lazy" />
               </div>
             </div>
             <div className="timeline-row">
               <div className="event-badge left">
-                <img src={hackathonBadge} alt="Case Study 13 March" />
+                <img src={hackathonBadge} alt="Case Study 13 March" loading="lazy" />
               </div>
               <div className="timeline-mid"><span className="dot" /></div>
               <div className="event-badge right">
-                <img src={hackathonBadge} alt="Pitch Competition 14 March" />
+                <img src={hackathonBadge} alt="Pitch Competition 14 March" loading="lazy" />
               </div>
             </div>
           </div>
@@ -165,19 +189,19 @@ function App() {
 
         <section id="events" className="events">
           <div className="section-title section-title--image">
-            <img src={eventsHeading} alt="Events" />
+            <img src={eventsHeading} alt="Events" loading="lazy" />
           </div>
           <div className="events-carousel-container">
             <div className="events-carousel">
               {eventItems.map((event) => (
                 <div key={event.id} className="event-card-carousel">
-                  <img src={event.img} alt={event.name} className="event-card-image" />
+                  <img src={event.img} alt={event.name} className="event-card-image" loading="lazy" />
                   <h3 className="event-card-name">{event.name}</h3>
                 </div>
               ))}
               {eventItems.map((event) => (
                 <div key={`duplicate-${event.id}`} className="event-card-carousel">
-                  <img src={event.img} alt={event.name} className="event-card-image" />
+                  <img src={event.img} alt={event.name} className="event-card-image" loading="lazy" />
                   <h3 className="event-card-name">{event.name}</h3>
                 </div>
               ))}
