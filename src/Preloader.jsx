@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import videoBackground from "./assets/Video_Background_Removal_For_Logo.mp4";
 import "./Preloader.css";
 
-const Preloader = ({ onComplete }) => {
+const Preloader = ({ onComplete, audioRef }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
+    // Start playing audio when preloader appears
+    if (audioRef?.current) {
+      audioRef.current.play().catch(err => console.log("Audio play error:", err));
+    }
+
     const timer = setTimeout(() => {
       setIsVisible(false);
       if (onComplete) onComplete();
-    }, 8000); //deo ends
+    }, 8000); //video ends
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, audioRef]);
 
   if (!isVisible) return null;
 

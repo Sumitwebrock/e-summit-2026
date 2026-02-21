@@ -71,7 +71,11 @@ function App() {
 
   return (
     <div className="page" style={{ "--hero-bg": `url(${grungeBackground})` }}>
-      {!preloaderComplete && <Preloader onComplete={() => setPreloaderComplete(true)} />}
+      <audio ref={audioRef} loop>
+        <source src={mehboobaMusic} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      {!preloaderComplete && <Preloader onComplete={() => setPreloaderComplete(true)} audioRef={audioRef} />}
       <img
         className="edge-strip edge-strip--top"
         src={edgeStrip}
@@ -95,10 +99,6 @@ function App() {
 
       <main>
         <section id="home" className="hero">
-          <audio ref={audioRef} loop>
-            <source src={mehboobaMusic} type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
           <button className="music-btn" onClick={toggleMusic} aria-label="Toggle music">
             <span className="music-icon">{musicPlaying ? "🔊" : "🔇"}</span>
           </button>
@@ -120,7 +120,7 @@ function App() {
           <div className="intro-media intro-media--right">
             <a
               className="intro-link"
-              href="https://unstop.com/college-fests/e-summit-2025-international-institute-of-information-technology-iiit-naya-raipur-307942"
+              href="https://unstop.com/college-fests/e-summit-2026-international-institute-of-information-technology-iiit-naya-raipur-441702"
               aria-label="Open Unstop"
             >
               <img src={openUnstop} alt="Open Unstop" />
