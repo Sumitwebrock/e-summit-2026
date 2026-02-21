@@ -194,10 +194,12 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className="footer-brand">E</div>
+        <div className="footer-brand">
+          <img src={navLogo} alt="E-Cell" style={{ width: "50px", height: "50px", objectFit: "contain" }} />
+        </div>
         <div className="footer-col">
           <h3>About Us</h3>
-          <a href="https://ecell.iiitnr.ac.in/">ecell iiit nr</a>
+          <a href="https://ecell.iiitnr.ac.in/">ECELL IIITNRr</a>
           <a href="https://ecell.iiitnr.ac.in/team">Team</a>
           <a href="#home">Committee</a>
         </div>

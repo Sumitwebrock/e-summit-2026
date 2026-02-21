@@ -583,15 +583,10 @@ footer {
 }
 
 .footer-brand {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #1b1b1b;
-  color: #f8d325;
-  font-family: "Bungee", sans-serif;
-  display: grid;
-  place-items: center;
-  font-size: 28px;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
 .footer-col h3 {
